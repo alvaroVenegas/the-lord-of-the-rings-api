@@ -1,0 +1,20 @@
+{
+  "name": "the-lord-of-the-rings-api",
+  "version": "1.0.0",
+  "description": "Api ambientada en El Señor de los Anillos",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "author": "Alvaro Venegas",
+  "license": "ISC",
+  "dependencies": {
+    "cloudinary": "^1.27.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12",
+    "multer": "^1.4.3",
+    "multer-storage-cloudinary": "^4.0.0"
+  }
+}
