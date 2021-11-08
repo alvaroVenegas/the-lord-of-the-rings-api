@@ -7,7 +7,7 @@ const WeaponController = require('./src/weapon/weapon.controller')
 const { connectDb } = require('./src/utils/db/db')
 const cloudinary = require('cloudinary').v2
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const app = express();
 
 connectDb();
@@ -34,6 +34,9 @@ app.use('/characters', CharacterController)
 app.use('/locations', LocationController)
 app.use('/items', ItemController)
 app.use('/weapons', WeaponController) 
+app.use('/', (req,res,next)=>{
+    return res.json('Home Page')
+})
 
 
 app.use('*', (req, res, next) => {
