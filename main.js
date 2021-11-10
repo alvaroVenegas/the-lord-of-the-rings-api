@@ -3,6 +3,8 @@ const CharacterController = require('./src/character/character.controller');
 const LocationController = require('./src/location/location.controller')
 const ItemController = require('./src/item/item.controller')
 const WeaponController = require('./src/weapon/weapon.controller')
+const UserController = require('./src/user/user.controller')
+const {isAuth} = require('./src/middlewares/auth.middleware')
 
 const { connectDb } = require('./src/utils/db/db')
 const cloudinary = require('cloudinary').v2
@@ -18,13 +20,17 @@ cloudinary.config({
     api_secret: process.env.API_SECRET
 });
 
-app.use(express.json())
+app.use(express.json({
+    limit:'5mb'
+}))
 app.use(express.urlencoded({ extended: true }))
 
+app.use('/users', UserController)
+app.use(isAuth)
 app.use('/characters', CharacterController)
 app.use('/locations', LocationController)
 app.use('/items', ItemController)
-app.use('/weapons', WeaponController) 
+app.use('/weapons', WeaponController)
 
 
 app.use('*', (req, res, next) => {

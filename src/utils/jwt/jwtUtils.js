@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
 
 class JwtUtils {
-    static generate(id, email) {
-        return jwt.sign({ id, email }, process.env.JWT_SECRET, { expiresIn: '1d' });
+    static generate(id, alias) {
+        return jwt.sign({ id, alias }, process.env.JWT_SECRET, { expiresIn: '1d' });
     }
 
     static verify(token) {
