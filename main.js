@@ -3,6 +3,7 @@ const CharacterController = require('./src/character/character.controller');
 const LocationController = require('./src/location/location.controller')
 const ItemController = require('./src/item/item.controller')
 const WeaponController = require('./src/weapon/weapon.controller')
+const cors = require("cors");
 
 const { connectDb } = require('./src/utils/db/db')
 const cloudinary = require('cloudinary').v2
