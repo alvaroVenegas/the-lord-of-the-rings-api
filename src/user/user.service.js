@@ -20,6 +20,9 @@ const getAllUsers = async (req, res, next) => {
 const getUser = async (req, res, next) => {
     try {
         const { id } = req.params
+        if(id != req.user.id){
+            return next(setError(403, 'Forbidden'))
+        }
         const user = await User.findById(id)
         if (!user) {
             return next(setError(404, 'User not found'))
