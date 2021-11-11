@@ -4,7 +4,7 @@ const { setError } = require('../utils/error/error.utils')
 const JwtUtils = require('../utils/jwt/jwtUtils')
 
 
-const getAllUsers = async (req, res, next) => {
+/* const getAllUsers = async (req, res, next) => {
     try {
         const users = await User.find()
         for (let i = 0; i < users.length; i++) {
@@ -15,7 +15,7 @@ const getAllUsers = async (req, res, next) => {
     } catch (error) {
         return next(error)
     }
-}
+} */
 
 const getUser = async (req, res, next) => {
     try {
@@ -38,7 +38,8 @@ const postNewUser = async (req, res, next) => {
     try {
 
         const newUser = new User(req.body)
-        const userExist = await User.find({ alias: newUser.alias })
+        const userExist = await User.findOne({ alias: newUser.alias })
+      
         if (userExist) {
             return next(setError(404, 'This Alias already exists'))
         }
@@ -87,7 +88,7 @@ const logoutUser = (req, res, next) => {
 }
 
 module.exports = {
-    getAllUsers,
+   /*  getAllUsers, */
     getUser,
     postNewUser,
     loginUser,

@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors')
 const CharacterController = require('./src/character/character.controller');
 const LocationController = require('./src/location/location.controller')
 const ItemController = require('./src/item/item.controller')
@@ -37,8 +38,8 @@ app.use(express.json({
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/users', UserController)
-app.use(isAuth)
 app.use('/characters', CharacterController)
+app.use(isAuth)
 app.use('/locations', LocationController)
 app.use('/items', ItemController)
 app.use('/weapons', WeaponController)

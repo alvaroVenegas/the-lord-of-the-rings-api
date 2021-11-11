@@ -1,9 +1,9 @@
 const UserController = require('express').Router();
 const { isAuth } = require('../middlewares/auth.middleware')
 
-const { getAllUsers, getUser, postNewUser, loginUser, logoutUser } = require('./user.service')
+const { /* getAllUsers, */ getUser, postNewUser, loginUser, logoutUser } = require('./user.service')
 
-UserController.get('/', [isAuth],getAllUsers)
+//UserController.get('/', [isAuth],getAllUsers)
 UserController.get('/:id',[isAuth], getUser)
 
 UserController.post('/', postNewUser)
