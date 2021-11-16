@@ -5,7 +5,11 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node main.js"
+    "start": "node main.js",
+    "character-seed":"node src/utils/seeds/character.seed",
+    "item-seed":"node src/utils/seeds/item.seed",
+    "location-seed":"node src/utils/seeds/location.seed",
+    "weapon-seed":"node src/utils/seeds/weapon.seed"
   },
   "author": "Alvaro Venegas",
   "license": "ISC",

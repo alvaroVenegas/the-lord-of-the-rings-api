@@ -29,13 +29,13 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:3001'],
+    origin: ['http://localhost:3000', 'http://localhost:4200'],
     credentials: true,
 }));
 app.use(express.json({
     limit:'5mb'
 }))
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({limit:'5mb', extended: true }))
 
 app.use('/users', UserController)
 app.use('/characters', CharacterController)
