@@ -9,13 +9,13 @@ const weapons = [
     {
         name:"Andúril",
         type:"Espada",
-        owner:"Aragorn",
+        owner:"6193ad3ce9d97d31fbb1bc52",
         img:""
     },
     {
         name:"Dardo",
         type:"Daga",
-        owner:"Frodo Bolson",
+        owner:"6193ad3ce9d97d31fbb1bc53",
         img:""
     },
     {
@@ -27,7 +27,7 @@ const weapons = [
     {
         name:"Glamdring",
         type:"Espada",
-        owner:"Gandalf",
+        owner:"6193ad3ce9d97d31fbb1bc58",
         img:""
     },
     {

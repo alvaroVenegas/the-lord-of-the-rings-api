@@ -4,7 +4,7 @@ const { setError } = require('../utils/error/error.utils');
 
 const getAllWeapons = async (req, res, next) => {
     try {
-        const allWeapons = await Weapon.find()
+        const allWeapons = await Weapon.find().populate('owner')
         res.status(200).json(allWeapons)
     } catch (error) {
         return next(error)
@@ -14,7 +14,7 @@ const getAllWeapons = async (req, res, next) => {
 const getWeapon = async (req, res, next) => {
     try{
         const {id} = req.params
-        const weapon = await Weapon.findById(id)
+        const weapon = await Weapon.findById(id).populate('owner')
         if (!weapon) {
             return next(setError(404, 'Weapon not found'))
         }

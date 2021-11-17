@@ -1,5 +1,6 @@
 const Character = require('./character.model')
 const { setError } = require('../utils/error/error.utils');
+const {charactersLocked} = require('../utils/seeds/character-locked')
 
 
 const getAllCharacters = async (req, res, next) => {
@@ -63,6 +64,9 @@ const patchCharacter = async (req, res, next) => {
 const deleteCharacter = async (req, res, next) => {
     try{
         const {id} = req.params
+
+        if (charactersLocked) return next(setError(403, 'Character locked'))
+
         const deletedCharacter = await Character.findByIdAndDelete(id)
         if (!deletedCharacter) {
             return next(setError(404, 'Character not found'))

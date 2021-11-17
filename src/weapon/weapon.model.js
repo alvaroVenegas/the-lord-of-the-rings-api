@@ -4,7 +4,7 @@ const weaponSchema = new mongoose.Schema(
     {
         name: { type: String, required: true, trim: true },
         type:{ type: String, required: true, trim: true },
-        owner:{ type: String, trim: true },
+        owner:{  type: mongoose.Types.ObjectId, ref: 'characters' },
         img:{ type: String, trim: true }
     },
     {
