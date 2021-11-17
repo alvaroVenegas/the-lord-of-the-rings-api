@@ -1,5 +1,6 @@
 const Weapon = require('./weapon.model')
 const { setError } = require('../utils/error/error.utils');
+const { deleteImgCloudinary } = require('../middlewares/deleteFile.middleware');
 
 
 const getAllWeapons = async (req, res, next) => {
@@ -66,6 +67,7 @@ const deleteWeapon = async (req, res, next) => {
         if (!deletedWeapon) {
             return next(setError(404, 'Weapon not found'))
         }
+        if (deletedWeapon.img) deleteImgCloudinary(deletedWeapon.img)
         return res.status(200).json(deletedWeapon)
 
     }catch(error){

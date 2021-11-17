@@ -1,5 +1,6 @@
 const Item = require('./item.model')
 const { setError } = require('../utils/error/error.utils');
+const { deleteImgCloudinary } = require('../middlewares/deleteFile.middleware');
 
 
 const getAllItems = async (req, res, next) => {
@@ -64,6 +65,7 @@ const deleteItem = async (req, res, next) => {
         if (!deletedItem) {
             return next(setError(404, 'Item not found'))
         }
+        if (deletedItem.img) deleteImgCloudinary(deletedItem.img)
         return res.status(200).json(deletedItem)
 
     }catch(error){

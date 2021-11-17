@@ -1,5 +1,6 @@
 const Location = require('./location.model')
 const { setError } = require('../utils/error/error.utils');
+const { deleteImgCloudinary } = require('../middlewares/deleteFile.middleware');
 
 
 const getAllLocations = async (req, res, next) => {
@@ -65,6 +66,7 @@ const deleteLocation = async (req, res, next) => {
         if (!deletedLocation) {
             return next(setError(404, 'Location not found'))
         }
+        if (deletedLocation.img) deleteImgCloudinary(deletedLocation.img)
         return res.status(200).json(deletedLocation)
 
     }catch(error){
