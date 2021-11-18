@@ -65,7 +65,7 @@ const deleteCharacter = async (req, res, next) => {
     try{
         const {id} = req.params
 
-        if (charactersLocked) return next(setError(403, 'Character locked'))
+        if (charactersLocked(id)) return next(setError(403, 'Character locked'))
 
         const deletedCharacter = await Character.findByIdAndDelete(id)
         if (!deletedCharacter) {
